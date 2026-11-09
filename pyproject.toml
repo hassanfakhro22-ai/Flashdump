@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xy-flash"
+version = "1.0.0"
+description = "XY.FLASH – Automatisches Fußball-Datenerfassungs-, Historisierungs- und Exportsystem für 10 Ligen (auf Basis von Scrapling)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "scrapling[fetchers]>=0.5.1",
+    "openpyxl>=3.1.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.8.0",
+    "pyright>=1.1.390",
+]
+
+[project.scripts]
+flashscore = "flashscore.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["flashscore*", "livescore*"]
